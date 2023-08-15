@@ -1,17 +1,8 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\LivestockController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::middleware(['splade'])->group(function () {
     Route::get('/', fn () => view('auth.login'))->name('auth');
@@ -19,6 +10,14 @@ Route::middleware(['splade'])->group(function () {
     Route::get('/login', fn () => view('auth.login'))->name('login');
     Route::get('/register', fn () => view('auth.register'))->name('register');
     Route::get('/home', fn () => view('home.index'))->name('home');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::resource('livestock', LivestockController::class);
+    Route::resource('employees', EmployeeController::class);
 
     // Registers routes to support the interactive components...
     Route::spladeWithVueBridge();
