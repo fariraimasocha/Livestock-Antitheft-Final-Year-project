@@ -15,9 +15,8 @@
             </x-splade-select>
             <x-splade-input name="color" label="Color" type="text"/>
             <x-splade-input name="dob" label="DOB" type="date"/>
+                <x-splade-file name="avatar" label="Image" filepond preview class="mt-5" />
             <x-splade-submit class="mt-5"/>
         </x-splade-form>
     </x-splade-modal>
-
-
 </x-layout>

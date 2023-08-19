@@ -22,6 +22,9 @@
                             <x-nav-link href="{{ route('livestock.index') }}" :active="request()->routeIs('livestock.index')">
                                 {{ __('Livestock') }}
                             </x-nav-link>
+                            <x-nav-link href="{{ route('tracking.index') }}" :active="request()->routeIs('tracking.index')">
+                                {{ __('Tracking') }}
+                            </x-nav-link>
                             <x-nav-link href="{{ route('employees.index') }}" :active="request()->routeIs('employees.index')">
                                 {{ __('Employees') }}
                             </x-nav-link>
