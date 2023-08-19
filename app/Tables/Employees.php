@@ -4,8 +4,10 @@ namespace App\Tables;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel;
 use ProtoneMedia\Splade\AbstractTable;
 use ProtoneMedia\Splade\SpladeTable;
+use ProtoneMedia\Splade\Facades\Toast;
 
 class Employees extends AbstractTable
 {
@@ -42,20 +44,29 @@ class Employees extends AbstractTable
     /**
      * Configure the given SpladeTable.
      *
-     * @param \ProtoneMedia\Splade\SpladeTable $table
+     * @param SpladeTable $table
      * @return void
      */
     public function configure(SpladeTable $table)
     {
         $table
-            ->withGlobalSearch(columns: ['id'])
-            ->column('id', sortable: true);
-
-            // ->searchInput()
-            // ->selectFilter()
-            // ->withGlobalSearch()
-
-            // ->bulkAction()
-            // ->export()
+            ->withGlobalSearch(columns: ['id', 'name', 'age', 'id_number', 'phone_number'])
+            ->column('id', sortable: true)
+            ->column('name', sortable: true)
+            ->column('age', sortable: true)
+            ->column('id_number', sortable: true)
+            ->column('salary', sortable: true)
+            ->column('phone_number', sortable: true)
+            ->column(label:'actions', exportAs: false)
+            ->export()
+            ->bulkAction(
+                label: 'Delete Selected',
+                each: fn (Employee $employee) => $employee->delete(),
+                after: fn () => Toast::info('Employees deleted successfully!'),
+                confirm: 'Are you sure you want to delete the selected items',
+                confirmButton: 'Delete',
+                cancelButton: 'Cancel'
+            )
+            ->paginate(8);
     }
 }

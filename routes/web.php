@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LivestockController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['splade'])->group(function () {
@@ -16,8 +21,12 @@ Route::middleware(['splade'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::resource('livestock', LivestockController::class);
-    Route::resource('employees', EmployeeController::class);
+    Route::resource('/livestock', LivestockController::class);
+    Route::resource('/employees', EmployeeController::class);
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/permissions', PermissionController::class);
+    Route::resource('/users', UsersController::class);
+    Route::resource('/dashboard', DashboardController::class);
 
     // Registers routes to support the interactive components...
     Route::spladeWithVueBridge();

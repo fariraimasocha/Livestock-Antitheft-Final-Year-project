@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Tables\Employees;
+use ProtoneMedia\Splade\Facades\Toast;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +15,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return view('employee.index',[
+            'employees' => Employees::class,
+
+        ]);
     }
 
     /**
@@ -21,7 +26,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.create');
     }
 
     /**
@@ -29,7 +34,17 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        //
+        Employee::create($request->validated());
+
+        Toast::title('Success!')
+            ->message('Employee Created Successfully!')
+            ->success()
+            ->leftTop()
+            ->info()
+            ->backdrop()
+            ->autoDismiss(3);
+
+        return redirect()->route('employees.index');
     }
 
     /**
@@ -45,7 +60,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('employee.edit', compact('employee'));
     }
 
     /**
@@ -53,7 +68,19 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        $employee->update($request->validated());
+
+        Toast::title('Success!')
+            ->message('Employee Updated Successfully!')
+            ->success()
+            ->leftTop()
+            ->info()
+            ->backdrop()
+            ->autoDismiss(3);
+
+        return redirect()->route('employees.index');
+
+
     }
 
     /**
@@ -61,6 +88,16 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+
+        Toast::title('Success!')
+            ->message('Employee Deleted Successfully!')
+            ->success()
+            ->leftTop()
+            ->info()
+            ->backdrop()
+            ->autoDismiss(3);
+
+        return redirect()->route('employees.index');
     }
 }

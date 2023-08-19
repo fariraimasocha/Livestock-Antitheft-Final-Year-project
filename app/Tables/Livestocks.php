@@ -8,6 +8,7 @@ use ProtoneMedia\Splade\AbstractTable;
 use ProtoneMedia\Splade\Facades\Toast;
 use ProtoneMedia\Splade\SpladeTable;
 use Maatwebsite\Excel\Excel;
+use ProtoneMedia\Splade\Table\LaravelExcelException;
 
 class Livestocks extends AbstractTable
 {
@@ -46,6 +47,7 @@ class Livestocks extends AbstractTable
      *
      * @param SpladeTable $table
      * @return void
+     * @throws LaravelExcelException
      */
     public function configure(SpladeTable $table)
     {
@@ -68,9 +70,6 @@ class Livestocks extends AbstractTable
                 cancelButton: 'Cancel'
             )
             ->paginate(8);
-            // ->searchInput()
-            // ->selectFilter()
-            // ->withGlobalSearch()
     }
 }
 

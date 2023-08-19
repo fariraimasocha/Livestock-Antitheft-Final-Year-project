@@ -6,7 +6,7 @@
             Create new livestock
         </h2>
 
-        <x-splade-form action="{{route('livestock.store')}}">
+        <x-splade-form action="{{route('livestock.store')}}" class="mt-5">
             <x-splade-input name="name" label="Name" type="text"/>
             <x-splade-input name="tag_no" label="Tag_no" type="text"/>
             <x-splade-select name="gender" label="Gender">

@@ -4,20 +4,20 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="justify-between flex">
                 <h2 class="font-Nc2 text-xl leading-relaxed">
-                    {{ __('Employee list') }}
+                    {{ __('Permissions list') }}
                 </h2>
-                <Link slideover href="{{ route('employees.create')}}" class="bg-blue1 rounded text-white py-1 px-1.5">
-                    Create Employee
+                <Link slideover href="{{ route('permissions.create')}}" class="bg-blue1 rounded text-white py-1 px-1.5">
+                    Create Permission
                 </Link>
             </div>
 
-            <x-splade-table :for="$employees" class="mt-5">
-                <x-splade-cell actions as="$employees">
+            <x-splade-table :for="$permissions" class="mt-5">
+                <x-splade-cell actions as="$permissions">
                     <div class="flex space-x-1.5">
-                        <Link slideover href="{{ route('employees.edit',$employees->id)}}" class="bg-blue1 rounded px-1 text-white">
+                        <Link slideover href="{{ route('permissions.edit',$permissions->id)}}" class="bg-blue1 rounded px-1 text-white">
                             Edit
                         </Link>
-                        <x-splade-form action="{{route('employees.destroy',$employees)}}" method="DELETE" confirm>
+                        <x-splade-form action="{{route('permissions.destroy',$permissions)}}" method="DELETE" confirm>
                             <button type="submit" class="bg-red-500 rounded px-1 text-white">
                                 Delete
                             </button>
@@ -28,3 +28,4 @@
         </div>
     </div>
 </x-layout>
+

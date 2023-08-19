@@ -21,6 +21,7 @@ class LivestockFactory extends Factory
             'name' => fake()->name(),
             'tag_no'=> fake()->unique()->buildingNumber(),
             'gender'=> fake()->randomElement(['male', 'female']),
+            'age'=> fake()->randomNumber(3),
             'dob'=>fake()->unique()->date(),
             'color'=> fake()->colorName(),
         ];
