@@ -51,7 +51,7 @@
                 </button>
             </div>
         </form>
-        <h1 class="mt-5 text-center text-l">New to Lats ? <span class="text-blue-700 font-semibold">Join now</span></h1>
+        <h1 class="mt-5 text-center text-l">Already have an Account ? <span class="text-blue-700 font-semibold"><a href="/login">Sign In</a></span></h1>
     </div>
 </div>
 

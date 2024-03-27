@@ -37,7 +37,7 @@
             </button>
         </div>
     </form>
-    <h1 class="mt-5 text-center text-l">New to Lats ? <span class="text-blue-700 font-semibold">Join now</span></h1>
+    <h1 class="mt-5 text-center text-l">New to Lats ? <span class="text-blue-700 font-semibold"><a href="/register">Join now</a></span></h1>
 </div>
 </div>
 

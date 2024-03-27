@@ -1,8 +1,7 @@
 <x-layout>
     <div class="w-10/12 justify-center mx-auto mt-5">
-        <h1 class="xl:text-5xl md:text-4xl text-2xl font-semibold leading-tight text-center text-gray-800 sm:mb-0 mb-12">
-            More Than 2 Years We Provide Service <br class="md:block hidden" />
-            in Livestock Protection Industry.
+        <h1 class="xl:text-3xl md:text-4xl text-xl font-Nc2 leading-tight text-center text-gray-800 sm:mb-0 mb-12">
+            Keeping Your Herd Safe with Cutting-Edge Anti-Theft and Tracking Solutions.
         </h1>
         <div class="md:mt-14 mt-4 relative sm:flex items-center justify-center">
             <img src="https://i.ibb.co/KjrPCyW/map.png" alt="world map image" class="w-full xl:h-full h-96 object-cover  sm:block hidden" />
