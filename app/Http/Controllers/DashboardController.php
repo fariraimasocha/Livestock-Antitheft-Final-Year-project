@@ -21,6 +21,6 @@ class DashboardController extends Controller
         $permissions = Permission::all();
         $assessments = Livestock::all();
 
-        return view('dashboard.index');
+        return view('dashboard.index',compact('reports', 'roles', 'permissions', 'assessments','users', 'obooks'));
     }
 }
