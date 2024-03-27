@@ -1,7 +1,7 @@
 @include('layout.app')
 <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <img src="{{ asset('Logos/LATS 1.png') }}" alt="logo" class="w-20 h-20 ml-10 " >
+        <img src="{{ asset('Logos/LATS 1.png') }}" alt="logo" class="w-20 h-20 justify-center mx-auto " >
         <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
             Sign in to your account
         </h2>
