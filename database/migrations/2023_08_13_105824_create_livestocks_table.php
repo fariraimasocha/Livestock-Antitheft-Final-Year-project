@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('tag_no')->unique();
-            $table->string('age');
             $table->string('gender');
             $table->date('dob');
             $table->string('color');
