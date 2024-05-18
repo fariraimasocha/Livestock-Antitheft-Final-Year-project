@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Livestock;
-use App\Models\Employee;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use App\Models\User;
-use Illuminate\Http\Request;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        $obooks = Role::all();
-        $reports = Employee::all();
-        $roles = Role::all();
-        $permissions = Permission::all();
-        $assessments = Livestock::all();
+        $users = User::all()->pluck('id')->all();
 
-        return view('dashboard.index',compact('reports', 'roles', 'permissions', 'assessments','users', 'obooks'));
+        $chart = (new LarapexChart)
+            ->lineChart()
+            ->addLine('Users', $users)
+            ->setXAxis(range(1, count($users)))
+            ->setTitle('All Users')
+            ->toVue();
+
+        return view('dashboard.index', [
+            'chart' => $chart
+        ]);
     }
 }

@@ -1,14 +1,6 @@
-{{--<x-layout>--}}
-{{--    <div class="mapouter rounded-lg">--}}
-{{--        <div class="gmap_canvas">--}}
-{{--            <iframe width="1530" height="720" id="gmap_canvas" src="http://maps.google.com/maps?q=-17.825290,31.051052&z=16&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">--}}
-{{--            </iframe>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</x-layout>--}}
-
 <x-layout>
-    <div>
-        
+    <div class="mt-8 rounded-lg justify-center mx-auto">
+        <h1 class="text-center">Live Feed</h1>
+        <img src="data:image/jpeg;base64,{{ base64_encode($imageData) }}" alt="Real-time Video Feed" class="justify-center mx-auto">
     </div>
 </x-layout>

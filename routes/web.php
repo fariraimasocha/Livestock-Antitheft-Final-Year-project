@@ -21,7 +21,6 @@ Route::middleware(['splade'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
     Route::resource('/livestock', LivestockController::class);
     Route::resource('/employees', EmployeeController::class);
     Route::resource('/roles', RoleController::class);

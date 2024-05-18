@@ -34,5 +34,9 @@
                 }
             }
         ]
+    },
+    "dependencies": {
+        "apexcharts": "^3.49.0",
+        "vue3-apexcharts": "^1.5.2"
     }
 }
