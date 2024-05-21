@@ -8,9 +8,12 @@
 
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="bg-white shadow-xl rounded-lg p-4 space-y-4">
+        <div class="mx-auto px-8 flex space-x-5">
+            <div class="bg-white shadow-xl rounded-lg p-4 space-y-4 flex-1">
                 <apexchart series="series" v-bind="@js($chart)"></apexchart>
+            </div>
+            <div class="bg-white shadow-xl rounded-lg p-4 space-y-4 flex-1">
+                <apexchart series="series" v-bind="@js($lineChart)"></apexchart>
             </div>
         </div>
     </div>
