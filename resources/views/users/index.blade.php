@@ -1,11 +1,13 @@
 <x-layout>
+    <x-slot:header>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{__('Users')}}
+        </h2>
+    </x-slot:header>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="justify-between flex">
-                <h2 class="font-Nc2 text-xl leading-relaxed">
-                    {{ __('Users list') }}
-                </h2>
                 <Link slideover href="{{ route('users.create')}}" class="bg-blue1 rounded text-white py-1 px-1.5">
                     Create User
                 </Link>
