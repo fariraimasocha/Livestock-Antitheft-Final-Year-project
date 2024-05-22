@@ -11,6 +11,7 @@ use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::middleware(['splade'])->group(function () {
     Route::get('/', fn () => view('auth.login'))->name('auth');
     Route::get('/docs', fn () => view('docs'))->name('docs');

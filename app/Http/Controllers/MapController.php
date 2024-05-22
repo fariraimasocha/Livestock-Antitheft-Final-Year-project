@@ -37,7 +37,7 @@ class MapController extends Controller
      */
     public function create()
     {
-        return view('maps.create');
+        return view('map.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class MapController extends Controller
     {
         Map::create($request->validated());
         Toast::title('Map created')->message('The map has been created successfully')->success();
-        return redirect()->route('maps.index');
+        return redirect()->route('map.index');
     }
 
     /**
@@ -63,7 +63,7 @@ class MapController extends Controller
      */
     public function edit(Map $map)
     {
-        return view('maps.edit', compact('map'));
+        return view('map.edit', compact('map'));
     }
 
     /**
@@ -83,6 +83,6 @@ class MapController extends Controller
     {
         $map->delete();
         Toast::title('Map deleted')->message('The map has been deleted successfully')->success();
-        return redirect()->route('maps.index');
+        return redirect()->route('map.index');
     }
 }
