@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LivestockController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -28,6 +29,7 @@ Route::middleware(['splade'])->group(function () {
     Route::resource('/users', UsersController::class);
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/tracking', TrackingController::class);
+    Route::resource('/map', MapController::class);
 
     // Registers routes to support the interactive components...
     Route::spladeWithVueBridge();

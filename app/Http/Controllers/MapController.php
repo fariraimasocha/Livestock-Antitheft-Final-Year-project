@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMapRequest;
 use App\Http\Requests\UpdateMapRequest;
 use App\Models\Map;
+use ProtoneMedia\Splade\Facades\Toast;
 
 class MapController extends Controller
 {
@@ -13,7 +14,22 @@ class MapController extends Controller
      */
     public function index()
     {
-        //
+
+
+        $markers = Map::all();
+
+        $initialMarkers = [];
+        foreach ($markers as $marker) {
+            $initialMarkers[] = [
+                'position' => [
+                    'lat' => $marker->lat,
+                    'lng' => $marker->lng,
+                ],
+                'draggable' => true,
+            ];
+        }
+
+        return view('map.index', compact('initialMarkers'));
     }
 
     /**
@@ -21,7 +37,7 @@ class MapController extends Controller
      */
     public function create()
     {
-        //
+        return view('maps.create');
     }
 
     /**
@@ -29,7 +45,9 @@ class MapController extends Controller
      */
     public function store(StoreMapRequest $request)
     {
-        //
+        Map::create($request->validated());
+        Toast::title('Map created')->message('The map has been created successfully')->success();
+        return redirect()->route('maps.index');
     }
 
     /**
@@ -45,7 +63,7 @@ class MapController extends Controller
      */
     public function edit(Map $map)
     {
-        //
+        return view('maps.edit', compact('map'));
     }
 
     /**
@@ -53,7 +71,9 @@ class MapController extends Controller
      */
     public function update(UpdateMapRequest $request, Map $map)
     {
-        //
+        $map->update($request->validated());
+        Toast::title('Map updated')->message('The map has been updated successfully')->success();
+        return redirect()->route('maps.index');
     }
 
     /**
@@ -61,6 +81,8 @@ class MapController extends Controller
      */
     public function destroy(Map $map)
     {
-        //
+        $map->delete();
+        Toast::title('Map deleted')->message('The map has been deleted successfully')->success();
+        return redirect()->route('maps.index');
     }
 }
