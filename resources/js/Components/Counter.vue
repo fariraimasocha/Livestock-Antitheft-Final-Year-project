@@ -4,6 +4,7 @@
 
 <script>
 export default {
+    name: 'Counter',
     props: {
         initialMarkers: {
             type: Array,
@@ -13,7 +14,6 @@ export default {
     mounted() {
         this.loadLeaflet()
             .then(() => {
-                console.log('Leaflet loaded');
                 this.initializeMap();
             })
             .catch(error => {
@@ -40,48 +40,34 @@ export default {
             });
         },
         initializeMap() {
-            console.log('Mounted hook is called');
-            console.log('Initial Markers:', this.initialMarkers);
+            const map = L.map('map', {
+                center: {
+                    lat: -19.0154,
+                    lng: 29.1549,
+                },
+                zoom: 4,
+            });
 
-            try {
-                // Initialize the map
-                const map = L.map('map', {
-                    center: {
-                        lat: -19.0154,
-                        lng: 29.1549,
-                    },
-                    zoom: 6,
-                });
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap',
+            }).addTo(map);
 
-                // Add a tile layer
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap',
-                }).addTo(map);
+            this.initialMarkers.forEach(markerData => {
+                const marker = L.marker(markerData.position, {
+                    draggable: markerData.draggable,
+                })
+                    .addTo(map)
+                    .bindPopup(`<b>${markerData.position.lat}, ${markerData.position.lng}</b>`);
+                map.panTo(markerData.position);
+            });
 
-                // Add markers
-                this.initialMarkers.forEach(markerData => {
-                    console.log('Adding marker:', markerData);
-                    const marker = L.marker(markerData.position, {
-                        draggable: markerData.draggable,
-                    })
-                        .addTo(map)
-                        .bindPopup(`<b>${markerData.position.lat},  ${markerData.position.lng}</b>`);
-                    map.panTo(markerData.position);
-                });
+            map.on('click', (event) => {
+                console.log(event.latlng.lat, event.latlng.lng);
+            });
 
-                // Handle map click event
-                map.on('click', (event) => {
-                    console.log(event.latlng.lat, event.latlng.lng);
-                });
-
-                // Handle marker drag end event
-                map.on('dragend', (event) => {
-                    console.log(event.target.getLatLng());
-                });
-
-            } catch (error) {
-                console.error('Error during map initialization:', error);
-            }
+            map.on('dragend', (event) => {
+                console.log(event.target.getLatLng());
+            });
         }
     }
 };
