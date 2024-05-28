@@ -11,7 +11,7 @@ use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
-
+Route::resource('/map', MapController::class);
 Route::middleware(['splade'])->group(function () {
     Route::get('/', fn () => view('auth.login'))->name('auth');
     Route::get('/docs', fn () => view('docs'))->name('docs');
@@ -30,7 +30,7 @@ Route::middleware(['splade'])->group(function () {
     Route::resource('/users', UsersController::class);
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/tracking', TrackingController::class);
-    Route::resource('/map', MapController::class);
+
 
     // Registers routes to support the interactive components...
     Route::spladeWithVueBridge();
