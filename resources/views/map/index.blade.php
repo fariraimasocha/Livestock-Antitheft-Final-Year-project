@@ -17,11 +17,13 @@
     <title>...map</title>
 </head>
 <body>
-<div class="flex space-x-3 ">
+<div class="flex space-x-3 py-7 px-2 ">
     <a href="{{route('home')}}">
-        Home
+        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Home
+        </button>
     </a>
-    <h1 class='font-light text-4xl text-gray-800 text-center py-7'>All Animal Locations</h1>
+    <h1 class='font-light  text-gray-800 text-4xl text-center '>All Animal Locations</h1>
 </div>
 <div id='map'></div>
 <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js' crossorigin=''></script>
