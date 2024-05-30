@@ -14,10 +14,13 @@
         }
     </style>
     <link rel='stylesheet' href='https://unpkg.com/leaflet@1.8.0/dist/leaflet.css' crossorigin='' />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <title>...map</title>
+
 </head>
 
 <body>
-<h1 class='text-center'>All Animal Locations</h1>
+<h1 class='font-light text-4xl text-gray-800 text-center py-7'>All Animal Locations</h1>
 <div id='map'></div>
 
 <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js' crossorigin=''></script>
