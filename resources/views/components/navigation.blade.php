@@ -37,9 +37,11 @@
                             <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                             {{__('Users') }}
                             </x-nav-link>
-                            <x-nav-link href="{{ route('map.index') }}" :active="request()->routeIs('map.index')">
-                                {{__('Location') }}
-                            </x-nav-link>
+                            <a href="{{route('map.index')}}">
+                                <button class="bg-blue-500 mt-3 hover:bg-blue-400 text-white font-bold py-1 px-4 w-28 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                                    Map
+                                </button>
+                            </a>
                         @endauth
                     </div>
                 </div>
