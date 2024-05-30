@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -16,16 +15,18 @@
     <link rel='stylesheet' href='https://unpkg.com/leaflet@1.8.0/dist/leaflet.css' crossorigin='' />
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <title>...map</title>
-
 </head>
-
 <body>
-<h1 class='font-light text-4xl text-gray-800 text-center py-7'>All Animal Locations</h1>
+<div class="flex space-x-3 ">
+    <a href="{{route('home')}}">
+        Home
+    </a>
+    <h1 class='font-light text-4xl text-gray-800 text-center py-7'>All Animal Locations</h1>
+</div>
 <div id='map'></div>
-
 <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js' crossorigin=''></script>
 <script>
-    let map, markers = [];
+    let map, markers = [], polyline;
     /* ----------------------------- Initialize Map ----------------------------- */
     function initMap() {
         map = L.map('map', {
@@ -50,13 +51,13 @@
         const initialMarkers = <?php echo json_encode($initialMarkers); ?>;
 
         for (let index = 0; index < initialMarkers.length; index++) {
-
             const data = initialMarkers[index];
             const marker = generateMarker(data, index);
             marker.addTo(map).bindPopup(`<b>${data.position.lat},  ${data.position.lng}</b>`);
             map.panTo(data.position);
             markers.push(marker)
         }
+        updatePolyline();
     }
 
     function generateMarker(data, index) {
@@ -83,8 +84,17 @@
     function markerDragEnd($event, index) {
         console.log(map);
         console.log($event.target.getLatLng());
+        updatePolyline();
+    }
+
+    /* ----------------------- Update Polyline ---------------------- */
+    function updatePolyline() {
+        if (polyline) {
+            map.removeLayer(polyline);
+        }
+        const positions = markers.map(marker => marker.getLatLng());
+        polyline = L.polyline(positions, { color: 'blue' }).addTo(map);
     }
 </script>
 </body>
-
 </html>
