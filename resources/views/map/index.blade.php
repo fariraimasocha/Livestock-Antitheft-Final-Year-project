@@ -19,11 +19,11 @@
 <body>
 <div class="flex space-x-3 py-7 px-2 ">
     <a href="{{route('home')}}">
-        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 w-28 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
             Home
         </button>
     </a>
-    <h1 class='font-light  text-gray-800 text-4xl text-center '>All Animal Locations</h1>
+    <h1 class='font-light  text-gray-800 text-4xl text-center '>Movement Tracking</h1>
 </div>
 <div id='map'></div>
 <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js' crossorigin=''></script>
@@ -36,7 +36,7 @@
                 lat: -17.782380,
                 lng: 31.051826,
             },
-            zoom: 6
+            zoom: 7
         });
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

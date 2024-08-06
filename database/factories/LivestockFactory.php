@@ -24,6 +24,8 @@ class LivestockFactory extends Factory
             'age'=> fake()->randomNumber(3),
             'dob'=>fake()->unique()->date(),
             'color'=> fake()->colorName(),
+
+
         ];
     }
 }
